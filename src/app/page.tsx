@@ -14,21 +14,24 @@ type PageProps = {
 };
 
 export default async function HomePage({ searchParams }: PageProps) {
+
+  const resolvedSearchParams = await searchParams;
+
   const result = await getActivities({
-    priority: searchParams.priority as never,
-    category: searchParams.category as never,
-    status: searchParams.status as never,
-    team: searchParams.team,
-    assignee: searchParams.assignee,
+    priority: resolvedSearchParams.priority as never,
+    category: resolvedSearchParams.category as never,
+    status: resolvedSearchParams.status as never,
+    team: resolvedSearchParams.team,
+    assignee: resolvedSearchParams.assignee,
   });
 
   const activities = result.success ? result.data : [];
 
   // Metrics for header badges
   const total = activities.length;
-  const critical = activities.filter((a) => a.priority === "CRITICA").length;
-  const inProgress = activities.filter((a) => a.status === "EM_ANDAMENTO").length;
-  const blocked = activities.filter((a) => a.status === "BLOQUEADA").length;
+  const critical = activities.filter((a: { priority: string }) => a.priority === "CRITICA").length;
+const inProgress = activities.filter((a: { status: string }) => a.status === "EM_ANDAMENTO").length;
+const blocked = activities.filter((a: { status: string }) => a.status === "BLOQUEADA").length;
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-200">
