@@ -1,0 +1,20 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Activity {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  priority    String   // Valores: BAIXA | MEDIA | ALTA | CRITICA
+  category    String   // Valores: BUG | FEATURE | MELHORIA | SUPORTE | OPERACIONAL
+  team        String
+  assignee    String
+  status      String   @default("PENDENTE") // Valores: PENDENTE | EM_ANDAMENTO | CONCLUIDA | BLOQUEADA
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
