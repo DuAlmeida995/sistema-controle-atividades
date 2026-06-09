@@ -1,6 +1,6 @@
 # Sistema de Controle de Atividades
 
-Uma aplicação web local para registro, organização e acompanhamento de atividades internas de times — construída com Next.js, TypeScript, SQLite e Prisma ORM, seguindo a abordagem **Specification-Driven Development (SDD)**.
+Uma aplicação web local para registro, organização e acompanhamento de atividades internas de times, construída com Next.js, TypeScript, SQLite e Prisma ORM, seguindo a abordagem **Specification-Driven Development (SDD)**.
 
 ---
 
@@ -78,7 +78,7 @@ Acesse [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Estrutura do projeto
+## Estrutura Geral do projeto
 
 ```
 .
@@ -249,16 +249,7 @@ A ferramenta utilizada foi o **Claude (claude.ai)** diretamente no navegador, co
 
 ### Impacto no desenvolvimento
 
-| Etapa | Tempo estimado sem IA | Com IA assistida |
-|---|---|---|
-| Schema Prisma + decisão de enums | ~30 min | ~5 min |
-| Schemas Zod + tipos TypeScript | ~45 min | ~10 min |
-| Server Actions (CRUD + filtros) | ~90 min | ~15 min |
-| Componentes React (4 arquivos) | ~180 min | ~25 min |
-| Arquitetura Server/Client | decisão manual | sugerida e justificada pela IA |
-| **Total estimado** | **~6 horas** | **~55 min** |
-
-A IA não apenas gerou código: ela aplicou as regras do `SPEC.md` diretamente nas implementações (mensagens de erro exatas, valores de enum, critérios de aceite) e tomou decisões de arquitetura justificadas que extrapolaram o documento — como filtros por URL e o padrão `ActionResult<T>` — elevando a qualidade da solução além do especificado.
+A IA aplicou as regras do `SPEC.md` diretamente nas implementações (mensagens de erro exatas, valores de enum, critérios de aceite) e tomou decisões de arquitetura justificadas que extrapolaram o documento, como filtros por URL e o padrão `ActionResult<T>`, elevando a qualidade da solução além do especificado.
 
 ---
 
